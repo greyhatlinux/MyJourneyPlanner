@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.messagebox as tkmsg
 import datetime as dt
+import time
 
 def ui():
     root = tk.Tk()
@@ -10,9 +11,20 @@ def ui():
     x = w/4
     y = h/4
     root.geometry('%dx%d+%d+%d' % (w/2, h/2, x, y))
-    date = "Time Now: " + str(dt.datetime.now())
-    myLabel = tk.Label(root, text=date)
-    myLabel.pack()
+    # date = "Time Now: " + str(dt.datetime.now())
+    # myLabel = tk.Label(root, text=date)
+    # myLabel.pack()
+
+    curr_time = time.strftime('%H:%M:%S %p')
+    clock_label = tk.Label(root, padx=20, text=curr_time, bg="green", fg="black")
+    clock_label.pack()
+
+    def update_time():
+        curr_time = time.strftime('%H:%M:%S %p')
+        clock_label.config(text="Time Now: " + str(curr_time))
+        clock_label.after(1000, update_time)
+
+
 
     def show():
         label = tk.Label(root, text="From: " + str(from_var.get()) + " To: " + str(to_var.get())).pack()
@@ -45,4 +57,5 @@ def ui():
 
     btn = tk.Button(root, text="Close", width=10, command=root.quit)
     btn.pack()
+    update_time()
     root.mainloop()
