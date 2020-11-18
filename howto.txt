@@ -1,0 +1,7 @@
+How to Guide:
+
+1. From the first dropdown menu, choose your starting point
+2. From the second dropdown menu, choose your destination point
+3. Select the time you wish to commute in the third input box in 24hr format.
+Eg. if you wish to travel at 3pm, fill 15:00
+4. With all above information, click the "Submit" button
