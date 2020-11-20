@@ -67,3 +67,6 @@ Eg. if you wish to travel at 3pm in afternoon, fill 1500, or if it is 8:30pm in 
 Note : 
 1. Make sure, there is no typo in those.
 2. If there exists no path from start to finish, or there is a typo it will show error
+
+## Application Workflow :
+![flowchart](img/JourneyPlanner.png)
