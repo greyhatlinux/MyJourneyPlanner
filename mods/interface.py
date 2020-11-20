@@ -9,6 +9,7 @@ from collections import namedtuple, deque
 
 
 inf = float('inf')
+# defining an edge for the network
 Edge = namedtuple('Edge', 'start, end, cost')
 
 # function for making an edge connecting starting point (start) and finishing point (end) with time taken (cost)
@@ -32,6 +33,7 @@ class Network:
             )
         )
 
+    # function to get a node pair
     def get_node_pairs(self, n1, n2, both_ends=True):
         if both_ends:
             node_pairs = [[n1, n2], [n2, n1]]
@@ -39,6 +41,7 @@ class Network:
             node_pairs = [[n1, n2]]
         return node_pairs
 
+    # function to remove an edge
     def remove_edge(self, n1, n2, both_ends=True):
         node_pairs = self.get_node_pairs(n1, n2, both_ends)
         edges = self.edges[:]
@@ -46,6 +49,7 @@ class Network:
             if [edge.start, edge.end] in node_pairs:
                 self.edges.remove(edge)
 
+    # function to add an edge
     def add_edge(self, n1, n2, cost=1, both_ends=True):
         node_pairs = self.get_node_pairs(n1, n2, both_ends)
         for edge in self.edges:
@@ -113,7 +117,7 @@ def ui():
 
 
     curr_time = time.strftime('%H:%M:%S %p')
-    clock_label = tk.Label(root, padx=20, text=curr_time, pady=10, bg="green", fg="black")
+    clock_label = tk.Label(root, padx=20, text=curr_time, pady=10, bg="orange", fg="black")
     clock_label.pack()
 
     # this is a basic clock which keeps updating every second, just to remind user of the current time
@@ -122,7 +126,7 @@ def ui():
         clock_label.config(text="Time Now: " + str(curr_time))
         clock_label.after(1000, update_time)
 
-
+    # function to show the stopages for the selected start and end stations
     def showStops():
         mychoice = tk.Tk()
         mychoice.title("My Journey Path")
@@ -153,6 +157,7 @@ def ui():
                 result = tk.Label(mychoice, text = "Check input values, no such path/stations", padx=20, bg="orange")
                 result.pack()
 
+        # code block to check the travel time restrictions
         if(int(at_var.get()) > 500 and int(at_var.get())<2330):
             from_text = tk.Label(mychoice, text="Starting Point").pack()
             from_src = tk.Entry(mychoice,width=50, bd=5, fg="black")
@@ -217,6 +222,8 @@ def ui():
 
     at_var = tk.Entry(root, width=10)
     at_var.pack()
+
+    # setting a default placeholder for 8:00 am in morning
     at_var.insert(0,"0800")
     at_label = tk.Label(root, text="At", pady=10).pack()
 
