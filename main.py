@@ -9,7 +9,6 @@ sys.path.insert(0, pwd)
 
 import interface
 
-
 if __name__ == "__main__":
     print("Date and time: " + str(date.datetime.now()))
     interface.ui()

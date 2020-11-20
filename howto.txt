@@ -1,7 +1,11 @@
 How to Guide:
 
-1. From the first dropdown menu, choose your starting point
-2. From the second dropdown menu, choose your destination point
+1. From the first dropdown menu, choose your starting Line
+2. From the second dropdown menu, choose your destination Line
 3. Select the time you wish to commute in the third input box in 24hr format.
 Eg. if you wish to travel at 3pm, fill 15:00
-4. With all above information, click the "Submit" button
+4. With all above information, click the "Submit" button.
+5. On submitting, you need to fill two text boxes with the names of the start and destination station
+Note : 
+1. Make sure, there is no typo in those.
+2. If there exists no path from start to finish, or there is a typo it will show error

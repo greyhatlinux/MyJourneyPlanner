@@ -24,7 +24,7 @@ you should carefully consider the design, implementation and testing of the soft
 appropriate or stated technology.
 
 ## Data Structures Used : Double Linked List
-The Data Structure to hold data of diffrent stations should be in the for of Double Linked List.
+The Data Structure to hold data of diffrent stations should be in the form of Double Linked List.
 
 ## Algorithm Used : Dijkstra Algorithm
 To Compute shortest distance between the two user entered stations, Dijkstra Algorithm should be employed. 
