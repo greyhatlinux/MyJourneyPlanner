@@ -87,7 +87,8 @@ class Network:
                     distances[neighbour] = alternative_route
                     previous_vertices[neighbour] = current_vertex
 
-
+        # the variable curr_dist (current distance) actually measures the time of travelling that distance
+        # it is made global, beacuse we need to preset it to the users, from a different function
         global curr_dist
         curr_dist = -1
         prev_dist = -1
@@ -135,14 +136,6 @@ def ui():
         from_src = tk.StringVar()
         to_dest = tk.StringVar()
 
-        from_text = tk.Label(mychoice, text="Starting Point").pack()
-        from_src = tk.Entry(mychoice,width=50, bd=5, fg="black")
-        from_src.pack()
-
-        to_text = tk.Label(mychoice, text="Final Point").pack()
-        to_dest = tk.Entry(mychoice, text="From",width=50, bd=5)
-        to_dest.pack()
-
         def direction():
             try:
                 raw_results = graph.dijkstra(str(from_src.get()),str(to_dest.get()))
@@ -160,9 +153,20 @@ def ui():
                 result = tk.Label(mychoice, text = "Check input values, no such path/stations", padx=20, bg="orange")
                 result.pack()
 
-        stopage_btn = tk.Button(mychoice, text="Show my stopages", command=direction)
-        stopage_btn.pack()
+        if(int(at_var.get()) > 500 and int(at_var.get())<2330):
+            from_text = tk.Label(mychoice, text="Starting Point").pack()
+            from_src = tk.Entry(mychoice,width=50, bd=5, fg="black")
+            from_src.pack()
 
+            to_text = tk.Label(mychoice, text="Final Point").pack()
+            to_dest = tk.Entry(mychoice, text="From",width=50, bd=5)
+            to_dest.pack()
+
+            stopage_btn = tk.Button(mychoice, text="Show my stopages", command=direction)
+            stopage_btn.pack()
+        else:
+            travel_time_err = tk.Label(mychoice,pady=20, text="Trains operate only between 5am morning to 12pm midnight").pack()
+            travel_time_err2 = tk.Label(mychoice, pady=5, text="Enter a valid travel time between 0500 to 2400").pack()
 
         mychoice_close_btn = tk.Button(mychoice, text="Close", command=mychoice.destroy)
         mychoice_close_btn.pack()
@@ -213,7 +217,7 @@ def ui():
 
     at_var = tk.Entry(root, width=10)
     at_var.pack()
-    at_var.insert(0,"02:00")
+    at_var.insert(0,"0800")
     at_label = tk.Label(root, text="At", pady=10).pack()
 
 
