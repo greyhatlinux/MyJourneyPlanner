@@ -1,3 +1,4 @@
+# importing modules as required in the program
 import tkinter as tk
 import tkinter.messagebox as tkmsg
 import datetime as dt
@@ -10,18 +11,17 @@ from collections import namedtuple, deque
 inf = float('inf')
 Edge = namedtuple('Edge', 'start, end, cost')
 
-
+# function for making an edge connecting starting point (start) and finishing point (end) with time taken (cost)
 def make_edge(start, end, cost=1):
   return Edge(start, end, cost)
 
-
+# class defining the Graph structure
 class Network:
     def __init__(self, edges):
-        # let's check that the data is right
+        # This checks for wrong entry (if any)
         wrong_edges = [i for i in edges if len(i) not in [2, 3]]
         if wrong_edges:
             raise ValueError('Wrong edges data: {}'.format(wrong_edges))
-
         self.edges = [make_edge(*edge) for edge in edges]
 
     @property
@@ -64,6 +64,7 @@ class Network:
 
         return neighbours
 
+    # structure of dijkstra algorithm implementation
     def dijkstra(self, source, dest):
         assert source in self.vertices, 'Such point does not exist in the map'
         distances = {vertex: inf for vertex in self.vertices}
@@ -73,6 +74,7 @@ class Network:
         distances[source] = 0
         vertices = self.vertices.copy()
 
+        # this checks all vertices which start with the current vertex
         while vertices:
             current_vertex = min(
                 vertices, key=lambda vertex: distances[vertex])
@@ -85,8 +87,14 @@ class Network:
                     distances[neighbour] = alternative_route
                     previous_vertices[neighbour] = current_vertex
 
+
+        global curr_dist
+        curr_dist = -1
+        prev_dist = -1
         path, current_vertex = deque(), dest
         while previous_vertices[current_vertex] is not None:
+            curr_dist = max(prev_dist, distances[current_vertex]) + 1
+            prev_dist = curr_dist
             path.appendleft(current_vertex)
             current_vertex = previous_vertices[current_vertex]
         if path:
@@ -94,7 +102,7 @@ class Network:
         return path
 
         
-
+# hereon comes the User Interface implementation on tkinter
 def ui():
     root = tk.Tk()
     root.title("My Journey Planner")
@@ -107,6 +115,7 @@ def ui():
     clock_label = tk.Label(root, padx=20, text=curr_time, pady=10, bg="green", fg="black")
     clock_label.pack()
 
+    # this is a basic clock which keeps updating every second, just to remind user of the current time
     def update_time():
         curr_time = time.strftime('%H:%M:%S %p')
         clock_label.config(text="Time Now: " + str(curr_time))
@@ -115,7 +124,7 @@ def ui():
 
     def showStops():
         mychoice = tk.Tk()
-        mychoice.title("My Stops")
+        mychoice.title("My Journey Path")
         w = mychoice.winfo_screenwidth()
         h = mychoice.winfo_screenheight()
         mychoice.geometry('%dx%d+%d+%d' % (w/3, h/3, w/3, h/3))
@@ -145,6 +154,8 @@ def ui():
                 all_stops = all_stops + " Reached destination"
                 result = tk.Label(mychoice, text = all_stops, padx=20, bg="orange")
                 result.pack()
+                result_time = tk.Label(mychoice, text = "Total time of travel : " + str(curr_dist) + " minutes", padx=20, bg="orange")
+                result_time.pack()
             except:
                 result = tk.Label(mychoice, text = "Check input values, no such path/stations", padx=20, bg="orange")
                 result.pack()
@@ -219,6 +230,13 @@ def ui():
     root.mainloop()
 
 
+# Data for smal scale testing
+# graph = Network([
+#     ("a", "b", 5),  ("a", "c", 8),   ("c", "d", 14), ("c", "f", 3),  ("d", "e", 3), 
+#     ("a", "f", 1), ("b", "c", 12),
+#     ("b", "d", 6), ("e", "f", 6)])
+
+# this defines the list implementation of the entire graph
 graph = Network([("Harrow & Wealdstone","Kenton", 2),
 ("Kenton","South Kenton",	2),
 ("South Kenton","North Wembley",	2),
