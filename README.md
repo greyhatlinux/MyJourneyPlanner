@@ -102,3 +102,7 @@ Note :
 
 ## Application Workflow :
 ![flowchart](./img/JourneyPlanner.png)
+
+
+## Contribution
+The project is open for community contribution, for feature enhancement or bug fixes (if any). Feel free to open issues, or send your PR on this. 
