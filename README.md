@@ -69,4 +69,4 @@ Note :
 2. If there exists no path from start to finish, or there is a typo it will show error
 
 ## Application Workflow :
-![flowchart](img/JourneyPlanner.png)
+![flowchart](./img/JourneyPlanner.png)
