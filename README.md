@@ -14,7 +14,7 @@ city area. You are provided with a standard map in pdf format that depicts the n
 
 > For elaborate structure, open the document *city.pdf* in the img/ folder.
 
-## Data Structures Used : Linked List, array
+## Data Structures Used : List, array
 A graph can be represented in List and a Matrix form. Both with its own merits, and pitfalls.
 To represent the train system if the city, here we've used List Representation of the nodes in the graph.
 List representation not only gives better time complexity, it makes things easier to be interpreted.
@@ -29,6 +29,7 @@ Dijkstra Algorithm is a graph search algorithm, which makes searching the shorte
 
 ### Limitations
 1. It may not give the shortest path, when the weights are negative.
+2. The number of iterations is equal to the number of nodes, so cam be very cumbersome for very large number of nodes.
 
 ### Dijkastra Algorithm
 
