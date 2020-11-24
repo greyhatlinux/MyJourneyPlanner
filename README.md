@@ -4,9 +4,15 @@ A python GUI project with implementation of advanced Data Structures and Algorit
 
 ## Topic : Designing, developing and testing a journey planner model for a hypothetical Underground train network.
 
-### Description :
+## Description :
 The City Underground tube system is a complex interconnection of stations across the
 city area. You are provided with a standard map in pdf format that depicts the network. You may assume that the trains operate from 05:00 until midnight each day. 
+
+## City train routes 
+
+![map](./img/tfl.png)
+
+> For elaborate structure, open the document *city.pdf* in the img/ folder.
 
 ## Data Structures Used : Linked List, array
 A graph can be represented in List and a Matrix form. Both with its own merits, and pitfalls.
