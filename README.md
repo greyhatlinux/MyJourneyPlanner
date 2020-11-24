@@ -62,8 +62,33 @@ Valid Travelling time : The valid travelling is taken from 5am in morning to 12p
 
 If your travel involves too many intermediate stops, the second popup width may be insufficient to show the entire range of intermediate stations. In those cases, you should resize the popup window according to your convienience, so that all intermediate stations are visible.
 
+## Setup guide
 
-### How to use the Application : 
+> Follow along if you're on a Linux system (preferably Debian based) 
+
+1. Start with a system, pre-installed with Python3.6 (or more)
+2. Install python3-pip 
+```
+$ sudo apt install python3-pip
+```
+3. Install tkinter from pip3 
+```
+$ sudo apt install python3-tk
+```
+4. Check the tkinter version from Python REPL.
+
+5. Once ready with 
+- Pythn3.6  
+- Tkinter
+
+### Simply run 
+
+```
+$ python3 main.py
+```
+
+
+## How to use the Application : 
 1. From the first dropdown menu, choose your starting Line
 2. From the second dropdown menu, choose your destination Line
 3. Select the time you wish to commute in the third input box in 24hr format.
@@ -73,6 +98,7 @@ Eg. if you wish to travel at 3pm in afternoon, fill 1500, or if it is 8:30pm in 
 Note : 
 1. Make sure, there is no typo in those.
 2. If there exists no path from start to finish, or there is a typo it will show error
+
 
 ## Application Workflow :
 ![flowchart](./img/JourneyPlanner.png)
